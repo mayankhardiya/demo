@@ -1,0 +1,58 @@
+<div class="w3-col m7">
+    
+    <div class="w3-row-padding">
+      <div class="w3-col m12">
+        <div class="w3-card w3-round w3-white">
+          <div class="w3-container w3-padding">
+            <h6 class="w3-opacity">what are you feeling....</h6>
+              <form method="post" action="/users/upload_post" enctype="multipart/form-data">
+                <section>
+                <div class="container">
+                  <input type="radio" name="post_type" value="Public"  id="radio-1">
+                  <label for="radio-1"><span class="radio"><b>Public</b></span></label>
+                </div>
+                <div class="container">
+                  <input type="radio" name="post_type" value="Friend" id="radio-2">
+                  <label for="radio-2"><span class="radio"><b>Friend<b></span></label>
+                </div>
+                </section>
+              <br>
+                <div class="upload-btn-wrapper">
+                  <button class="btn">Upload a file</button>
+                  <input type="file" name="post_image" />
+                </div>
+            <p><textarea name="post_text" cols="50" rows="5" maxlength="300" style="border:1px solid;" placeholder="Write Something HERE....."></textarea></p>
+             <button type="submit" class="w3-button w3-theme"><i class="fas fa-edit"></i> &nbsp;Post</button> 
+              </form>
+            </div>
+        </div>
+      </div>
+    </div>
+    <% 
+    for(index in publicPostList)
+    {
+    %>
+    <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+      <img src="../profile/<%=publicPostList[index].profile_pic%>" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+      <span class="w3-right w3-opacity"><%=publicPostList[index].post_date%></span>
+      <h4><%=publicPostList[index].name%></h4><br>
+      <hr class="w3-clear">
+      <p><%=publicPostList[index].post_text%></p>
+        <div class="w3-row-padding" style="margin:0 -16px">
+          <div class="w3-half">
+            <img src="../uploads/<%=publicPostList[index].post_image%>" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+          </div>
+          <div class="w3-half">
+            <img src="../uploads/<%=publicPostList[index].post_image%>" style="width:100%" alt="Nature" class="w3-margin-bottom">
+        </div>
+      </div>
+      <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="far fa-grin-alt"></i> &nbsp;Like</button> 
+      <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="far fa-comment-dots"></i> &nbsp;Comment</button> 
+    </div>
+    <%
+    }
+    %>
+   
+    
+  <!-- End Middle Column -->
+  </div>
